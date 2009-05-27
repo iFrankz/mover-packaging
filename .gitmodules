@@ -1,9 +1,9 @@
 [submodule "Mover"]
-	path = ./Mover
+	path = Mover
 	url = git://github.com/millenomi/slideapp.git
 [submodule "MuiKit"]
-	path = ./MuiKit
+	path = MuiKit
 	url = git://github.com/millenomi/muikit.git
 [submodule "Tools"]
-	path = ./Tools
+	path = Tools
 	url = git://github.com/millenomi/infinitelabs-build-tools.git
