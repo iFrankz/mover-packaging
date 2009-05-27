@@ -7,13 +7,13 @@ git submodule update --init
 
 echo "#include \"Dependencies.xcconfig\"" >> MuiKit/Local.xcconfig
 cat > MuiKit/Dependencies.xcconfig << EOF
-INFINITELABS_TOOLS = ../Tools
+INFINITELABS_TOOLS = \$(SRCROOT)/../Tools
 EOF
 
 # Mover needs to point to MuiKit and Tools
 
 echo "#include \"Dependencies.xcconfig\"" >> Mover/Local.xcconfig
 cat > Mover/Dependencies.xcconfig << EOF
-INFINITELABS_TOOLS = ../Tools
-INFINITELABS_LIB_MUIKIT = ../MuiKit
+INFINITELABS_TOOLS = \$(SRCROOT)/../Tools
+INFINITELABS_LIB_MUIKIT = \$(SRCROOT)/../MuiKit
 EOF
