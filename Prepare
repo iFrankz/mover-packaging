@@ -1,18 +1,36 @@
 #!/bin/bash
 
+if [ "$ILABS_L0ShowOnRequestLogging" == "YES" ]; then
+	set -avx
+fi
+
+function L0AddLocalDepsIncludeIfNeededInDirectory()
+{	
+	LOCAL_FILE="$1"/Local.xcconfig
+	
+	if [ -f "$LOCAL_FILE" ]; then
+		grep -q "#include \"Dependencies.xcconfig\"" "$LOCAL_FILE"
+		if [ "$?" == 1 ]; then
+			echo "#include \"Dependencies.xcconfig\"" >> "$LOCAL_FILE"
+		fi
+	else
+		echo "#include \"Dependencies.xcconfig\"" >> "$LOCAL_FILE"
+	fi
+}
+
 git submodule init
 git submodule update --init
 
 # MuiKit needs to point to Tools.
 
-echo "#include \"Dependencies.xcconfig\"" >> MuiKit/Local.xcconfig
+L0AddLocalDepsIncludeIfNeededInDirectory MuiKit
 cat > MuiKit/Dependencies.xcconfig << EOF
 INFINITELABS_TOOLS = \$(SRCROOT)/../Tools
 EOF
 
 # Mover needs to point to MuiKit and Tools
 
-echo "#include \"Dependencies.xcconfig\"" >> Mover/Local.xcconfig
+L0AddLocalDepsIncludeIfNeededInDirectory Mover
 cat > Mover/Dependencies.xcconfig << EOF
 INFINITELABS_TOOLS = \$(SRCROOT)/../Tools
 INFINITELABS_LIB_MUIKIT = \$(SRCROOT)/../MuiKit
