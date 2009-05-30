@@ -31,6 +31,8 @@ EOF
 # Mover needs to point to MuiKit and Tools
 
 L0AddLocalDepsIncludeIfNeededInDirectory Mover
+touch Mover/Local-Debug.xcconfig
+touch Mover/Local-Release.xcconfig
 cat > Mover/Dependencies.xcconfig << EOF
 INFINITELABS_TOOLS = \$(SRCROOT)/../Tools
 INFINITELABS_LIB_MUIKIT = \$(SRCROOT)/../MuiKit
