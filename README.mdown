@@ -1,0 +1,14 @@
+# The Mover packaging repository.
+
+This repository keeps track of Mover releases by referencing Mover and its dependencies through Git submodules. This is an experimental replacement for the `DownloadDependencies` script in the Mover repository, but it looks like it works well enough.
+
+Projects must be set up to reference each other before they can be used. The scripts in this repository do just that. If you want to clone the release you've checked out this repository for, use:
+
+	sh Prepare
+	
+and it will check out the submodules and set 'em up correctly. If you instead want to have the 'edge' version of Mover with all the extra untested goodness, use instead:
+
+	sh Edge
+	
+which will do the same (and will call `Prepare` internally), but will pull the latest revisions in the master branch for all repos. Git powa!
+
