@@ -37,3 +37,8 @@ cat > Mover/Dependencies.xcconfig << EOF
 INFINITELABS_TOOLS = \$(SRCROOT)/../Tools
 INFINITELABS_LIB_MUIKIT = \$(SRCROOT)/../MuiKit
 EOF
+
+# Set up no ads if needed by this build.
+if [ -x Mover/Scripts/Ads ]; then
+	Mover/Scripts/Ads off
+fi
