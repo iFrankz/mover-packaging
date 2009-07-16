@@ -6,5 +6,5 @@ cd "$HERE"
 sh Prepare
 MODULES=( Tools MuiKit Mover )
 for MODULE in "${MODULES[@]}"; do
-	(cd "$MODULE" && git co master && git pull origin master) || exit 1
+	(cd "$MODULE" && git checkout master && git pull origin master) || exit 1
 done
